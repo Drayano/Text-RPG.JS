@@ -171,9 +171,7 @@ for (let i = 1; i < 101; i++) {
 
 game_reset();
 
-// TODO : Change some log prints
-// TODO : Add more random events
-// TODO : Add a way to find items (item event in the wild and shop that sells them)
+// TODO : Add Item Shop (event)
 // TODO : Monsters ambush event
 // TODO : Find better formulas (leveled up stat gain, monster stats and exp etc...)
 // TODO : Add a save/load feature (save player stats and items in a JSON file and load from them)

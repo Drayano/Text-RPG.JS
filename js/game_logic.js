@@ -21,6 +21,7 @@ function encounter(player, monster) {
 
     // Item Event
     else if (random_event <= item_event) {
+        log_text("\nYou find something shinning inside the bushes out there, you try to reach out and...");
         item_found = getRandomInt(3);
 
         if (!sword_found && item_found === sword_index + 1) {
@@ -64,14 +65,6 @@ function game_loop() {
     }
 }
 
-function stats() {
-    if (player1.health > player1.max_health) {
-        player1.health = player1.max_health;
-    }
-
-    player_stats.innerHTML = `Name : ${player1.name}<br>Level : ${player1.level}<br>XP : ${player1.experience} <br>HP : ${player1.health} / ${player1.max_health}<br>Strength : ${player1.strength}<br>Speed : ${player1.speed}<br>Gold : ${player1.money}`;
-}
-
 // General functions
 
 function getRandomInt(max) {
@@ -109,4 +102,12 @@ function game_reset() {
 function log_text(text) {
     logs.innerHTML += text + "\n";
     logs.scrollTop = logs.scrollHeight;
+}
+
+function stats() {
+    if (player1.health > player1.max_health) {
+        player1.health = player1.max_health;
+    }
+
+    player_stats.innerHTML = `Name : ${player1.name}<br>Level : ${player1.level}<br>XP : ${player1.experience} / ${experience_array[player1.level - 1]}<br>HP : ${player1.health} / ${player1.max_health}<br>Strength : ${player1.strength}<br>Speed : ${player1.speed}<br>Gold : ${player1.money}`;
 }
