@@ -22,20 +22,19 @@ function encounter(player, monster) {
     // Item Event
     else if (random_event <= item_event) {
         item_found = getRandomInt(3);
-        console.log(item_found)
 
         if (!sword_found && item_found === sword_index + 1) {
-            log_text("You found a sword !");
+            log_text("\nYou found a sword !");
             getItem(sword_index + 1);
         }
 
         else if (!shield_found && item_found === shield_index + 1) {
-            log_text("You found a shield !");
+            log_text("\nYou found a shield !");
             getItem(shield_index + 1);
         }
 
         else {
-            log_text("You found a healing potion !");
+            log_text("\nYou found a healing potion !");
             getItem(potion_index + 1);
         }
         

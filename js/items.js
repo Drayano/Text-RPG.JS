@@ -28,6 +28,7 @@ function useItem(e) {
             let healed = 0;
 
             if (player1.health === player1.max_health) {
+                log_text("You're already full HP !");
                 return;
             }
 
@@ -59,6 +60,7 @@ function useItem(e) {
             document.getElementById(`item2-number`).innerHTML = items_inventory[sword_index];
 
             player1.strength += sword_strength;
+            log_text("Sword Equipped");
             stats();
         }
 
@@ -67,6 +69,7 @@ function useItem(e) {
             document.getElementById(`item2-number`).innerHTML = items_inventory[sword_index];
 
             player1.strength -= sword_strength;
+            log_text("Sword Unequipped");
             stats();
         }
     }
@@ -77,6 +80,7 @@ function useItem(e) {
             document.getElementById(`item3-number`).innerHTML = items_inventory[shield_index];
 
             player1.max_health += shield_defense;
+            log_text("Shield Equipped");
             stats();
         }
 
@@ -85,6 +89,7 @@ function useItem(e) {
             document.getElementById(`item3-number`).innerHTML = items_inventory[shield_index];
 
             player1.max_health -= shield_defense;
+            log_text("Shield Unequipped");
             stats();
         }
     }
