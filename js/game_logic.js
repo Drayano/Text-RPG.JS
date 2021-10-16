@@ -7,10 +7,6 @@ function encounter(player, monster) {
         random_event = fight_event;
     }
 
-    if (kills_number === 3) {
-        random_event = item_event;
-    }
-
     // Fight Event
     if (random_event <= fight_event) {
         log_text(`${player.name} encounters a level ${monster.level} ${monster.type} with ${monster.health} HP`);
