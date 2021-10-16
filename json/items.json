@@ -1,0 +1,23 @@
+[
+    { 
+      "id": 1,
+      "name": "Health Potion",
+      "category": "health",
+      "value": 20,
+      "owned": 0
+    },
+    { 
+      "id": 2,
+      "name": "Sword",
+      "category": "strength",
+      "value": 10,
+      "owned": 0
+    },
+    { 
+      "id": 3,
+      "name": "Shield",
+      "category": "max_health",
+      "value": 10,
+      "owned": 0
+    }
+]

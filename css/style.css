@@ -39,6 +39,11 @@ h1 {
     font-size: 50px;
 }
 
+img {
+    max-width: 70%;
+    max-height: 70%;
+}
+
 .parent {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -78,8 +83,27 @@ h1 {
     grid-area: 8 / 6 / 9 / 8; 
 }
 
-.inventory {
-    grid-area: 3 / 1 / 8 / 2; 
+#inventory {
+    grid-area: 3 / 1 / 8 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#item1 {
+    text-align: center;
+    display: none;
+}
+
+#item2 {
+    text-align: center;
+    display: none;
+}
+
+#item3 {
+    text-align: center;
+    display: none;
 }
 
 .btn {

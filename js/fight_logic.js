@@ -1,11 +1,12 @@
 function fight_decision(e) {
+    // Fight or Healing Event
     document.getElementById("yes").disabled = true;
     document.getElementById("no").disabled = true;
     document.getElementById("next").disabled = false;
 
     if (e.target.innerHTML === "Yes") {
         // Fight Event
-        if (random_event < 95) {
+        if (random_event <= fight_event) {
             if (player1.speed >= monster1.speed) {
                 log_text(`${player1.name} speed (${player1.speed}) is bigger than the ${monster1.type} speed (${monster1.speed}), ${player1.name} attacks first !`);
                 
@@ -38,14 +39,14 @@ function fight_decision(e) {
         }
 
         // Healing Inn Event
-        else {
+        else if (random_event > fight_event && random_event <= inn_event) {
             if (player1.money >= healing_cost) {
                 log_text(`\nYou decide to spend ${healing_cost} Gold and sleep in the Inn. Your HP is fully healed\n`);
                 player1.money -= healing_cost;
-                player1.health = max_health;
+                player1.health = player1.max_health;
             }
             
-            else {
+            else if (random_event <= item_event) {
                 log_text("\nYou do not seem to have enough money...\n")
             }
         }
@@ -53,7 +54,7 @@ function fight_decision(e) {
     
     else if (e.target.innerHTML === "No") {
         // Fight Event
-        if (random_event < 95) {
+        if (random_event <= fight_event) {
             if (player1.speed >= monster1.speed) {
                 log_text(`${player1.name} speed (${player1.speed}) is bigger than the ${monster1.type} speed (${monster1.speed}), ${player1.name} manages to flee !`);
     
@@ -84,8 +85,8 @@ function fight_decision(e) {
             }
         }
 
-         // Healing Inn Event
-        else {
+        // Healing Inn Event
+        else if (random_event > fight_event && random_event <= inn_event) {
             log_text(`\nYou decide to not spend any money and continue your journey instead\n`);
         }
     }
@@ -120,6 +121,7 @@ function fight(player, monster) {
         log_text(`${player.name} takes ${monster.strength} damage, his remaining HP is ${player.health}`);
 
         if (player.health <= 0) {
+            stats();
             return;
         }
 
