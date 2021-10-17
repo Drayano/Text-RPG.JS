@@ -44,6 +44,28 @@ function encounter(player, monster) {
         document.getElementById("next").disabled = false;
     }
 
+    // Item Shop Event
+    else if (random_event <= item_shop_event) {
+        log_text("You find an Item Shop, you can exchange your Gold for useful Items...");
+        log_text(`1- Health Potion : ${potion_price} Gold`);
+        log_text(`2- Sword : ${sword_price} Gold`);
+        log_text(`3- Shield : ${shield_price} Gold`);
+
+        log_text("Which one would you like to purchase ?");
+
+        document.getElementById("potion-shop").style.display = "block";
+        document.getElementById("sword-shop").style.display = "block";
+        document.getElementById("shield-shop").style.display = "block";
+
+        document.getElementById("potion-shop").disabled = false;
+        document.getElementById("sword-shop").disabled = false;
+        document.getElementById("shield-shop").disabled = false;
+
+        document.getElementById("yes").disabled = true;
+        document.getElementById("no").disabled = true;
+        // document.getElementById("next").disabled = false;
+    }
+
     stats();
 }
 
@@ -53,6 +75,10 @@ function game_loop() {
         document.getElementById("no").disabled = false;
         document.getElementById("next").disabled = true;
 
+        document.getElementById("potion-shop").style.display = "none";
+        document.getElementById("sword-shop").style.display = "none";
+        document.getElementById("shield-shop").style.display = "none";
+
         encounter(player1, monster1);
     }
 
@@ -60,6 +86,10 @@ function game_loop() {
         document.getElementById("yes").disabled = true;
         document.getElementById("no").disabled = true;
         document.getElementById("next").disabled = true;
+
+        document.getElementById("potion-shop").style.display = "none";
+        document.getElementById("sword-shop").style.display = "none";
+        document.getElementById("shield-shop").style.display = "none";
 
         log_text(`${player1.name} is dead ! \nYou killed ${kills_number - 1} monsters !`);
     }
@@ -93,6 +123,10 @@ function game_reset() {
     document.getElementById(`item1`).style.display = "none";
     document.getElementById(`item2`).style.display = "none";
     document.getElementById(`item3`).style.display = "none";
+
+    document.getElementById("potion-shop").style.display = "none";
+    document.getElementById("sword-shop").style.display = "none";
+    document.getElementById("shield-shop").style.display = "none";
 
     items_inventory = [0, 0, 0];
 

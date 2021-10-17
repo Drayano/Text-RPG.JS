@@ -94,3 +94,76 @@ function useItem(e) {
         }
     }
 }
+
+function buyItem(e) {
+    if (e.target.id === "potion-shop") {
+        document.getElementById("potion-shop").disabled = true;
+        document.getElementById("sword-shop").disabled = true;
+        document.getElementById("shield-shop").disabled = true;
+
+        document.getElementById("yes").disabled = true;
+        document.getElementById("no").disabled = true;
+        document.getElementById("next").disabled = false;
+
+        if (player1.money >= potion_price) {
+            log_text("\nYou bought a Health Potion !\n");
+            player1.money -= potion_price;
+            getItem(potion_index + 1);
+        }
+        
+        else {
+            log_text("Oh no, you don't have enough Gold...");
+        }
+    }
+    
+    if (e.target.id === "sword-shop") {
+        document.getElementById("potion-shop").disabled = true;
+        document.getElementById("sword-shop").disabled = true;
+        document.getElementById("shield-shop").disabled = true;
+
+        document.getElementById("yes").disabled = true;
+        document.getElementById("no").disabled = true;
+        document.getElementById("next").disabled = false;
+
+        if (!sword_found && player1.money >= sword_price) {
+            log_text("\nYou bought a Sword !\n");
+            player1.money -= sword_price;
+            getItem(sword_index + 1);
+            sword_found = true;
+        }
+
+        else if (sword_found) {
+            log_text("You already have a sword...");
+        }
+        
+        else {
+            log_text("Oh no, you don't have enough Gold...");
+        }
+    }
+
+    if (e.target.id === "shield-shop") {
+        document.getElementById("potion-shop").disabled = true;
+        document.getElementById("sword-shop").disabled = true;
+        document.getElementById("shield-shop").disabled = true;
+
+        document.getElementById("yes").disabled = true;
+        document.getElementById("no").disabled = true;
+        document.getElementById("next").disabled = false;
+
+        if (!shield_found && player1.money >= shield_price) {
+            log_text("\nYou bought a Shield !\n");
+            player1.money -= shield_price;
+            getItem(shield_index + 1);
+            shield_found = true;
+        }
+
+        else if (shield_found) {
+            log_text("You already have a shield...");
+        }
+        
+        else {
+            log_text("Oh no, you don't have enough Gold...");
+        }
+
+    }
+}

@@ -123,6 +123,10 @@ document.getElementById("potion").addEventListener("click", useItem);
 document.getElementById("sword").addEventListener("click", useItem);
 document.getElementById("shield").addEventListener("click", useItem);
 
+document.getElementById("potion-shop").addEventListener("click", buyItem);
+document.getElementById("sword-shop").addEventListener("click", buyItem);
+document.getElementById("shield-shop").addEventListener("click", buyItem);
+
 
 // Initialize Player and Monster
 let player1 = new Character("Drayano", 100, 5 + getRandomInt(5), 10 + getRandomInt(20));
@@ -143,6 +147,11 @@ let potion_healing = 25;
 let sword_strength = 10;
 let shield_defense = 10;
 
+// Items Prices
+let potion_price = 10;
+let sword_price = 20;
+let shield_price = 20;
+
 // Items Utilities Variables
 let item_found = getRandomInt(3);
 let sword_found = false;
@@ -151,9 +160,10 @@ let shield_found = false;
 
 // Events Variables
 // Event Values
-let fight_event = 90;
+let fight_event = 85;
 let inn_event = fight_event + 5;
 let item_event = inn_event + 5;
+let item_shop_event = item_event + 5;
 
 let random_event = 0;
 
