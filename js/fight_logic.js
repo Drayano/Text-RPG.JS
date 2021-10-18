@@ -140,3 +140,26 @@ function fight(player, monster) {
         }
     }
 }
+
+function ambush(player, monster) {
+    log_text(`${player.name} tries to flee but the ${monster.type} catches him, the ${monster.type} gets a free attack on ${player.name} !`);
+    
+    player.takeDamage(monster.strength);
+
+    log_text(`${player.name} takes ${monster.strength} damage, his remaining HP is ${player.health}`);
+
+    if (player.health <= 0) {
+        return;
+    }
+
+    log_text("The fight begins !");
+    while (player.health > 0 && monster.health > 0) {
+        fight(player, monster);
+    }
+
+    if (monster.health <= 0) {
+        kills_number += 1
+    }
+        
+    monster_reset();
+}

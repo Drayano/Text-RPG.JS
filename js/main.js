@@ -127,6 +127,9 @@ document.getElementById("potion-shop").addEventListener("click", buyItem);
 document.getElementById("sword-shop").addEventListener("click", buyItem);
 document.getElementById("shield-shop").addEventListener("click", buyItem);
 
+// Save and Load Listeners
+document.getElementById("save").addEventListener("click", save_game);
+document.getElementById("load").addEventListener("click", load_game);
 
 // Initialize Player and Monster
 let player1 = new Character("Drayano", 100, 5 + getRandomInt(5), 10 + getRandomInt(20));
@@ -166,12 +169,14 @@ let item_event = inn_event + 5;
 let item_shop_event = item_event + 5;
 
 let random_event = 0;
+let ambush_event = 0;
 
 
 // Utilities Variables
 let kills_number = 1;
 let healing_cost = 10 + getRandomInt(15);
 let health_gain = 0;
+let player_profile = 0;
 
 // Level-up Values
 let experience_array = [];
@@ -181,8 +186,7 @@ for (let i = 1; i < 101; i++) {
 
 game_reset();
 
-// TODO : Add Item Shop (event)
-// TODO : Monsters ambush event
 // TODO : Find better formulas (leveled up stat gain, monster stats and exp etc...)
-// TODO : Add a save/load feature (save player stats and items in a JSON file and load from them)
-// TODO : JSON file created and loaded from the filesystem, also save to localStorage
+// TODO : Save/load to JSON file locally
+// TODO : Add more monsters types (dragon boss and other normal monsters)
+// TODO : Rework and add more texts to make the game more interesting
