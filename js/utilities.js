@@ -58,6 +58,23 @@ function save_game() {
     document.getElementById("yes").disabled = true;
     document.getElementById("no").disabled = true;
     document.getElementById("next").disabled = true;
+
+
+    // Date format
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0 !
+    let yyyy = today.getFullYear();
+    let time = today.getHours().toString() + today.getMinutes().toString() + today.getSeconds().toString();
+
+    today = yyyy + mm + dd + "-" + time;
+
+    // Download JSON file on save
+    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(player_profile));
+    let dlAnchorElem = document.getElementById('downloadJSON');
+    dlAnchorElem.setAttribute("href",     dataStr     );
+    dlAnchorElem.setAttribute("download", `${player_profile[0].name}-TextRPG-${today}.json`);
+    dlAnchorElem.click();
 }
 
 function load_game() {
