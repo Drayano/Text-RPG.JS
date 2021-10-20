@@ -1,7 +1,9 @@
 function encounter(player, monster) {
     random_event = getRandomInt(100);
     ambush_event = getRandomInt(100);
-    healing_cost = 10 + getRandomInt(15);
+    healing_cost = player.level * 10 + 10 + getRandomInt(15);
+
+    logs.innerHTML = "";
 
     // Force the first event to always be a fight
     if (kills_number === 1) {
@@ -23,7 +25,7 @@ function encounter(player, monster) {
         }
         
         else if (ambush_event > 95) {
-            log_text("You walk towards the Inn and just as you're trying to get in you get ambushed by a monster !");
+            log_text("\nYou walk towards the Inn and just as you're trying to get in you get ambushed by a monster !");
             ambush(player, monster);
 
             if (player.health > 0) {
@@ -38,7 +40,7 @@ function encounter(player, monster) {
 
     // Item Event
     else if (random_event <= item_event) {
-        log_text("\nYou find something shinning inside the bushes out there, you try to reach out and...");
+        log_text("You find something shinning inside the bushes out there, you try to reach out and...");
 
         if (ambush_event <= 95) {
             item_found = getRandomInt(3);
@@ -64,7 +66,7 @@ function encounter(player, monster) {
         }
         
         else if (ambush_event > 95) {
-            log_text("Oh no, it was a monster hiding inside, you got ambushed !");
+            log_text("\nOh no, it was a monster hiding inside, you got ambushed !");
             ambush(player, monster);
 
             if (player.health > 0) {
@@ -82,12 +84,12 @@ function encounter(player, monster) {
         log_text("You find an Item Shop in the distance, you decides to walk towards it...");
 
         if (ambush_event <= 95) {
-            log_text("You can exchange your Gold for useful Items...");
+            log_text("\nYou can exchange your Gold for useful Items...");
             log_text(`1- Health Potion : ${potion_price} Gold`);
             log_text(`2- Sword : ${sword_price} Gold`);
             log_text(`3- Shield : ${shield_price} Gold`);
 
-            log_text("Which one would you like to purchase ?");
+            log_text("\nWhich one would you like to purchase ?");
 
             document.getElementById("potion-shop").style.display = "block";
             document.getElementById("sword-shop").style.display = "block";
@@ -102,18 +104,18 @@ function encounter(player, monster) {
         }
         
         else if (ambush_event > 95) {
-            log_text("Oh no ! Just as you approach the shop, a monster suddenly appears and ambush you, you're gonna have to fight it !");
+            log_text("\nOh no ! Just as you approach the shop, a monster suddenly appears and ambush you, you're gonna have to fight it !");
             ambush(player, monster);
 
             if (player.health > 0) {
-                log_text("You managed to beat the monster... You can finally enter the Shop now...");
+                log_text("\nYou managed to beat the monster... You can finally enter the Shop now...");
 
-                log_text("You can exchange your Gold for useful Items...");
+                log_text("\nYou can exchange your Gold for useful Items...");
                 log_text(`1- Health Potion : ${potion_price} Gold`);
                 log_text(`2- Sword : ${sword_price} Gold`);
                 log_text(`3- Shield : ${shield_price} Gold`);
 
-                log_text("Which one would you like to purchase ?");
+                log_text("\nWhich one would you like to purchase ?");
 
                 document.getElementById("potion-shop").style.display = "block";
                 document.getElementById("sword-shop").style.display = "block";

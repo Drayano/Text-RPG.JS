@@ -30,10 +30,10 @@ class Character extends Unit {
             log_text(`${player1.name} has reached level ${player1.level} !`);
 
             // TODO : Find a better formula and print the stat gain
-            health_gain = Math.floor(this.level * 2 + getRandomInt(5));
+            health_gain = Math.floor(this.level * 2 + 5 + getRandomInt(5));
             this.strength += getRandomInt(5);
             this.speed += getRandomInt(4);
-            this.evasion += getRandomInt(3);
+            this.evasion = this.level * 7 + 8 + getRandomInt(5);
             this.health += health_gain;
             this.max_health += health_gain;
         }
@@ -90,24 +90,24 @@ class Monster extends Unit {
         }
 
         // TODO : Try to find a better formula, this one should be good enough for testing
-        if (getRandomInt(100) < 95) {
+        if (getRandomInt(100) < 85) {
             this.type = "Goblin";
-            this.health = Math.floor(this.level * 1.5 + (10 + getRandomInt(5)));
+            this.health = Math.floor(this.level * 1.25 + (10 + getRandomInt(5)));
             this.strength = Math.floor(this.level * 0.8 + getRandomInt(5));
-            this.speed = Math.floor(this.level * 2.2 + (15 + getRandomInt(8)));
-            this.evasion = Math.floor(this.level * 0.5 + 5 + getRandomInt(10));
-            this.experience = Math.floor(this.level * 1.5 + (10 + getRandomInt(10)));
-            this.money = Math.floor(this.level * 1.5 + getRandomInt(5));
+            this.speed = Math.floor(this.level * 2.75 + (15 + getRandomInt(8)));
+            this.evasion = Math.floor(this.level * 5 + 25 + getRandomInt(5));
+            this.experience = Math.floor(this.level * 7 + (10 + getRandomInt(10)));
+            this.money = Math.floor(this.level * 4 + 5 + getRandomInt(5));
         }
     
         else {
             this.type = "Ogre";
-            this.health = Math.floor(this.level * 3 + (20 + getRandomInt(5)));
-            this.strength = Math.floor(this.level * 3 + (5 + getRandomInt(5)));
-            this.speed = Math.floor(this.level * 2 + getRandomInt(5));
-            this.evasion = Math.floor(this.level * 5 + 5 + getRandomInt(5));
-            this.experience = Math.floor(this.level * 3 + (25 + getRandomInt(15)));
-            this.money = Math.floor(this.level * 3 + getRandomInt(15));
+            this.health = Math.floor(this.level * 9 + (25 + getRandomInt(10)));
+            this.strength = Math.floor(this.level * 2.2 + (5 + getRandomInt(8)));
+            this.speed = Math.floor(this.level * 0.85 + 5 + getRandomInt(5));
+            this.evasion = Math.floor(this.level * 8 + 1);
+            this.experience = Math.floor(this.level * 12 + (25 + getRandomInt(15)));
+            this.money = Math.floor(this.level * 5 + 10 + getRandomInt(10));
         }
     }
 }
@@ -139,10 +139,10 @@ document.getElementById("load").addEventListener("click", load_game);
 let base_hp = 100;
 let base_strength = 5 + getRandomInt(5);
 let base_speed = 7 + getRandomInt(8);
-let base_evasion = 10;
+let base_evasion = 10 + getRandomInt(10);
 
 let player1 = new Character("Drayano", base_hp, base_strength, base_speed, base_evasion);
-let monster1 = new Monster(0, 0, 0);
+let monster1 = new Monster();
 
 
 // Items Variables
@@ -155,14 +155,14 @@ let sword_index = 1;
 let shield_index = 2;
 
 // Items Values
-let potion_healing = 25;
-let sword_strength = 10;
-let shield_defense = 10;
+let potion_healing = 50;
+let sword_strength = 25;
+let shield_defense = 25;
 
 // Items Prices
-let potion_price = 10;
-let sword_price = 20;
-let shield_price = 20;
+let potion_price = 35;
+let sword_price = 50;
+let shield_price = 50;
 
 // Items Utilities Variables
 let item_found = getRandomInt(3);
@@ -189,13 +189,13 @@ let player_profile = 0;
 
 // Level-up Values
 let experience_array = [];
-for (let i = 1; i < 101; i++) {
+for (let i = 1; i <= 100; i++) {
     experience_array.push(i * 50);
 }
 
 game_reset();
 
-// TODO : Balance : Ogre Speed and Strength, Health (monsters and level up gain), Experience, Gold, Evasion
+// TODO : Lower Goblin chances of appearing depending on player level
 // TODO : Add more monsters types (dragon boss and other normal monsters)
 // TODO : Save/load to JSON file locally
-// TODO : Rework and add more texts to make the game more interesting
+// TODO : Add more texts to make the game more interesting

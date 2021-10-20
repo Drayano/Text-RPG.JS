@@ -57,7 +57,7 @@ function save_game() {
 
     document.getElementById("yes").disabled = true;
     document.getElementById("no").disabled = true;
-    document.getElementById("next").disabled = false;
+    document.getElementById("next").disabled = true;
 }
 
 function load_game() {

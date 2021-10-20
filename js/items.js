@@ -27,14 +27,19 @@ function useItem(e) {
         if (items_inventory[potion_index] > 0) {
             let healed = 0;
 
-            if (player1.health === player1.max_health) {
+            if (player1.health <= 0) {
+                log_text("You can't drink a potion while dead !");
+                return;
+            }
+
+            else if (player1.health === player1.max_health) {
                 log_text("You're already full HP !");
                 return;
             }
 
             else if (player1.max_health - player1.health >= potion_healing) {
-                healed = 25;
-                player1.heal(25);  
+                healed = potion_healing;
+                player1.heal(potion_healing);  
             }
 
             else if (player1.max_health - player1.health < potion_healing) {

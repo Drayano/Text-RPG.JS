@@ -62,7 +62,7 @@ function fight_decision(e) {
             }
     
             else {
-                log_text(`${player1.name} tries to flee but the ${monster1.type} evasion (${monster1.speed}) is bigger or equal than ${player1.name} evasion (${player1.evasion}), the ${monster1.type} gets a free attack on ${player1.name} !`);
+                log_text(`${player1.name} tries to flee but the ${monster1.type} evasion (${monster1.evasion}) is bigger or equal than ${player1.name} evasion (${player1.evasion}), the ${monster1.type} gets a free attack on ${player1.name} !`);
     
                 player1.takeDamage(monster1.strength);
     
