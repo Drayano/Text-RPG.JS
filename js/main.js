@@ -197,5 +197,6 @@ game_reset();
 
 // TODO : Lower Goblin chances of appearing depending on player level
 // TODO : Add more monsters types (dragon boss and other normal monsters)
-// TODO : Save/load to JSON file locally
+// TODO : Make player name editable
 // TODO : Add more texts to make the game more interesting
+// TODO : Make the website look better (also on mobile)
