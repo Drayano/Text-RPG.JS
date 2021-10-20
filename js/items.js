@@ -109,6 +109,8 @@ function buyItem(e) {
             log_text("\nYou bought a Health Potion !\n");
             player1.money -= potion_price;
             getItem(potion_index + 1);
+
+            stats();
         }
         
         else {
@@ -130,6 +132,8 @@ function buyItem(e) {
             player1.money -= sword_price;
             getItem(sword_index + 1);
             sword_found = true;
+
+            stats();
         }
 
         else if (sword_found) {
@@ -155,6 +159,8 @@ function buyItem(e) {
             player1.money -= shield_price;
             getItem(shield_index + 1);
             shield_found = true;
+
+            stats();
         }
 
         else if (shield_found) {

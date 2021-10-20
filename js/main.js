@@ -18,7 +18,7 @@ class Character extends Unit {
     constructor(name, health, strength, speed, experience = 0, money = 0, level = 1) {
         super(health, strength, speed, experience, money, level);
         this.name = name;
-        this.max_health = 100;
+        this.max_health = base_hp;
     }
 
     levelUP() {
@@ -29,9 +29,9 @@ class Character extends Unit {
             log_text(`${player1.name} has reached level ${player1.level} !`);
 
             // TODO : Find a better formula and print the stat gain
-            health_gain = this.level * getRandomInt(5);
-            this.strength += this.level * getRandomInt(5);
-            this.speed += this.level * getRandomInt(5);
+            health_gain = Math.floor(this.level * 2 + getRandomInt(5));
+            this.strength += getRandomInt(5);
+            this.speed += getRandomInt(4);
             this.health += health_gain;
             this.max_health += health_gain;
         }
@@ -90,20 +90,20 @@ class Monster extends Unit {
         // TODO : Try to find a better formula, this one should be good enough for testing
         if (getRandomInt(100) < 95) {
             this.type = "Goblin";
-            this.health = this.level * (10 + getRandomInt(5));
-            this.strength = this.level * getRandomInt(5);
-            this.speed = this.level * (10 + getRandomInt(15));
-            this.experience = this.level * (10 + getRandomInt(10));
-            this.money = this.level * getRandomInt(5);
+            this.health = Math.floor(this.level * 1.5 + (10 + getRandomInt(5)));
+            this.strength = Math.floor(this.level * 0.8 + getRandomInt(5));
+            this.speed = Math.floor(this.level * 2.2 + (15 + getRandomInt(8)));
+            this.experience = Math.floor(this.level * 1.5 + (10 + getRandomInt(10)));
+            this.money = Math.floor(this.level * 1.5 + getRandomInt(5));
         }
     
         else {
             this.type = "Ogre";
-            this.health = this.level * (20 + getRandomInt(5));
-            this.strength = this.level * (5 + getRandomInt(5));
-            this.speed = this.level * getRandomInt(7);
-            this.experience = this.level * (25 + getRandomInt(15));
-            this.money = this.level * getRandomInt(15);
+            this.health = Math.floor(this.level * 3 + (20 + getRandomInt(5)));
+            this.strength = Math.floor(this.level * 3 + (5 + getRandomInt(5)));
+            this.speed = Math.floor(this.level * 2 + getRandomInt(5));
+            this.experience = Math.floor(this.level * 3 + (25 + getRandomInt(15)));
+            this.money = Math.floor(this.level * 3 + getRandomInt(15));
         }
     }
 }
@@ -132,8 +132,12 @@ document.getElementById("save").addEventListener("click", save_game);
 document.getElementById("load").addEventListener("click", load_game);
 
 // Initialize Player and Monster
-let player1 = new Character("Drayano", 100, 5 + getRandomInt(5), 10 + getRandomInt(20));
-let monster1 = new Monster(15, getRandomInt(5), getRandomInt(50));
+let base_hp = 1000;
+let base_strength = 5 + getRandomInt(5);
+let base_speed = 7 + getRandomInt(8);
+
+let player1 = new Character("Drayano", base_hp, base_strength, base_speed);
+let monster1 = new Monster(0, 0, 0);
 
 
 // Items Variables
@@ -187,6 +191,6 @@ for (let i = 1; i < 101; i++) {
 game_reset();
 
 // TODO : Find better formulas (leveled up stat gain, monster stats and exp etc...)
-// TODO : Save/load to JSON file locally
 // TODO : Add more monsters types (dragon boss and other normal monsters)
+// TODO : Save/load to JSON file locally
 // TODO : Rework and add more texts to make the game more interesting

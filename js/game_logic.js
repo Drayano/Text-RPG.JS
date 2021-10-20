@@ -146,6 +146,7 @@ function game_loop() {
         document.getElementById("sword-shop").style.display = "none";
         document.getElementById("shield-shop").style.display = "none";
 
+        monster_reset();
         encounter(player1, monster1);
     }
 
@@ -159,120 +160,5 @@ function game_loop() {
         document.getElementById("shield-shop").style.display = "none";
 
         log_text(`${player1.name} is dead ! \nYou killed ${kills_number - 1} monsters !`);
-    }
-}
-
-// General functions
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max) + 1;
-}
-
-function monster_reset() {
-    monster1.monsterType(player1.level);
-}
-
-function game_reset() {
-    logs.innerHTML = "";
-    //                      Name        HP  Strength             Speed
-    player1 = new Character("Drayano", 100, 5 + getRandomInt(5), 10 + getRandomInt(20));
-    monster_reset();
-    kills_number = 1;
-    healing_cost = 10 + getRandomInt(15);
-    health_gain = 0;
-
-    stats();
-
-    document.getElementById("yes").disabled = false;
-    document.getElementById("no").disabled = false;
-    document.getElementById("next").disabled = true;
-
-    document.getElementById(`item1`).style.display = "none";
-    document.getElementById(`item2`).style.display = "none";
-    document.getElementById(`item3`).style.display = "none";
-
-    document.getElementById("potion-shop").style.display = "none";
-    document.getElementById("sword-shop").style.display = "none";
-    document.getElementById("shield-shop").style.display = "none";
-
-    items_inventory = [0, 0, 0];
-
-    encounter(player1, monster1);
-}
-
-function log_text(text) {
-    logs.innerHTML += text + "\n";
-    logs.scrollTop = logs.scrollHeight;
-}
-
-function stats() {
-    if (player1.health > player1.max_health) {
-        player1.health = player1.max_health;
-    }
-
-    player_stats.innerHTML = `Name : ${player1.name}<br>Level : ${player1.level}<br>XP : ${player1.experience} / ${experience_array[player1.level - 1]}<br>HP : ${player1.health} / ${player1.max_health}<br>Strength : ${player1.strength}<br>Speed : ${player1.speed}<br>Gold : ${player1.money}`;
-}
-
-function save_game() {
-    player_profile = [
-        {
-            "name": player1.name,
-            "health": player1.health,
-            "strength": player1.strength,
-            "speed": player1.speed,
-            "experience": player1.experience,
-            "money": player1.money,
-            "level": player1.level,
-            "max_health": player1.max_health,
-            "items": items_inventory,
-            "sword_found": sword_found,
-            "shield_found": shield_found,
-            "kills": kills_number,
-        }
-    ];
-
-    localStorage.setItem(`${player1.name}`, JSON.stringify(player_profile))
-    logs.innerHTML = "";
-    log_text("Game Succesfully saved");
-}
-
-function load_game() {
-    if (localStorage.getItem(`${player1.name}`) === null) {
-        return;
-    }
-
-    else {
-        player_profile = JSON.parse(localStorage.getItem(player1.name));
-
-        player1.health = player_profile[0].health;
-        player1.strength = player_profile[0].strength;
-        player1.speed = player_profile[0].speed;
-        player1.experience = player_profile[0].experience;
-        player1.money = player_profile[0].money;
-        player1.level = player_profile[0].level;
-        player1.max_health = player_profile[0].max_health;
-        items_inventory = player_profile[0].items;
-        sword_found = player_profile[0].sword_found;
-        shield_found = player_profile[0].shield_found;
-        kills_number = player_profile[0].kills;
-
-        logs.innerHTML = "";
-        log_text("Game Succesfully loaded");
-
-        document.getElementById("yes").disabled = true;
-        document.getElementById("no").disabled = true;
-        document.getElementById("next").disabled = false;
-
-        document.getElementById(`item1`).style.display = "none";
-        document.getElementById(`item2`).style.display = "none";
-        document.getElementById(`item3`).style.display = "none";
-
-        document.getElementById("potion-shop").style.display = "none";
-        document.getElementById("sword-shop").style.display = "none";
-        document.getElementById("shield-shop").style.display = "none";
-
-        healing_cost = 10 + getRandomInt(15);
-
-        stats();
     }
 }
