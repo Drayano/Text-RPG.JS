@@ -182,7 +182,7 @@ let ambush_event = 0;
 
 
 // Utilities Variables
-let kills_number = 1;
+let kills_number = 0;
 let healing_cost = 10 + getRandomInt(15);
 let health_gain = 0;
 let player_profile = 0;

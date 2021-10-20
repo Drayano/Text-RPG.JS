@@ -4,7 +4,7 @@ function game_reset() {
     //                      Name       HP       Strength       Speed
     player1 = new Character("Drayano", base_hp, base_strength, base_speed, base_evasion);
     monster_reset();
-    kills_number = 1;
+    kills_number = 0;
     healing_cost = 10 + getRandomInt(15);
     health_gain = 0;
 
@@ -140,5 +140,5 @@ function stats() {
         player1.health = player1.max_health;
     }
 
-    player_stats.innerHTML = `Name : ${player1.name}<br>Level : ${player1.level}<br>XP : ${player1.experience} / ${experience_array[player1.level - 1]}<br>HP : ${player1.health} / ${player1.max_health}<br>Strength : ${player1.strength}<br>Speed : ${player1.speed}<br>Evasion : ${player1.evasion}<br>Gold : ${player1.money}`;
+    player_stats.innerHTML = `Name : ${player1.name}<br>Level : ${player1.level}<br>XP : ${player1.experience} / ${experience_array[player1.level - 1]}<br>HP : ${player1.health} / ${player1.max_health}<br>Strength : ${player1.strength}<br>Speed : ${player1.speed}<br>Evasion : ${player1.evasion}<br>Gold : ${player1.money}<br><br><br>Score : ${kills_number}`;
 }

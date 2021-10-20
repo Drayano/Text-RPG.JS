@@ -5,8 +5,8 @@ function encounter(player, monster) {
 
     logs.innerHTML = "";
 
-    // Force the first event to always be a fight
-    if (kills_number === 1) {
+    // Force the first few events to always be a fight
+    if (kills_number <= 3) {
         random_event = fight_event;
     }
 
@@ -161,6 +161,6 @@ function game_loop() {
         document.getElementById("sword-shop").style.display = "none";
         document.getElementById("shield-shop").style.display = "none";
 
-        log_text(`${player1.name} is dead ! \nYou killed ${kills_number - 1} monsters !`);
+        log_text(`${player1.name} is dead ! \nYou killed ${kills_number} monsters !`);
     }
 }
