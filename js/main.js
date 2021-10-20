@@ -1,8 +1,9 @@
 class Unit {
-    constructor(health, strength, speed, experience = 0, money = 0, level = 1) {
+    constructor(health, strength, speed, evasion, experience = 0, money = 0, level = 1) {
         this.health = health;
         this.strength = strength;
         this.speed = speed;
+        this.evasion = evasion;
         this.level = level;
         this.experience = experience;
         this.money = money;
@@ -15,8 +16,8 @@ class Unit {
 }
 
 class Character extends Unit {
-    constructor(name, health, strength, speed, experience = 0, money = 0, level = 1) {
-        super(health, strength, speed, experience, money, level);
+    constructor(name, health, strength, speed, evasion, experience = 0, money = 0, level = 1) {
+        super(health, strength, speed, evasion, experience, money, level);
         this.name = name;
         this.max_health = base_hp;
     }
@@ -32,6 +33,7 @@ class Character extends Unit {
             health_gain = Math.floor(this.level * 2 + getRandomInt(5));
             this.strength += getRandomInt(5);
             this.speed += getRandomInt(4);
+            this.evasion += getRandomInt(3);
             this.health += health_gain;
             this.max_health += health_gain;
         }
@@ -51,8 +53,8 @@ class Character extends Unit {
 }
 
 class Monster extends Unit {
-    constructor(health, strength, speed, experience, money = 0, level = 1, type = "Goblin") {
-        super(health, strength, speed, experience, money, level);
+    constructor(health, strength, speed, evasion, experience, money = 0, level = 1, type = "Goblin") {
+        super(health, strength, speed, evasion, experience, money, level);
         this.type = type;
     }
 
@@ -93,6 +95,7 @@ class Monster extends Unit {
             this.health = Math.floor(this.level * 1.5 + (10 + getRandomInt(5)));
             this.strength = Math.floor(this.level * 0.8 + getRandomInt(5));
             this.speed = Math.floor(this.level * 2.2 + (15 + getRandomInt(8)));
+            this.evasion = Math.floor(this.level * 0.5 + 5 + getRandomInt(10));
             this.experience = Math.floor(this.level * 1.5 + (10 + getRandomInt(10)));
             this.money = Math.floor(this.level * 1.5 + getRandomInt(5));
         }
@@ -102,6 +105,7 @@ class Monster extends Unit {
             this.health = Math.floor(this.level * 3 + (20 + getRandomInt(5)));
             this.strength = Math.floor(this.level * 3 + (5 + getRandomInt(5)));
             this.speed = Math.floor(this.level * 2 + getRandomInt(5));
+            this.evasion = Math.floor(this.level * 5 + 5 + getRandomInt(5));
             this.experience = Math.floor(this.level * 3 + (25 + getRandomInt(15)));
             this.money = Math.floor(this.level * 3 + getRandomInt(15));
         }
@@ -132,11 +136,12 @@ document.getElementById("save").addEventListener("click", save_game);
 document.getElementById("load").addEventListener("click", load_game);
 
 // Initialize Player and Monster
-let base_hp = 1000;
+let base_hp = 100;
 let base_strength = 5 + getRandomInt(5);
 let base_speed = 7 + getRandomInt(8);
+let base_evasion = 10;
 
-let player1 = new Character("Drayano", base_hp, base_strength, base_speed);
+let player1 = new Character("Drayano", base_hp, base_strength, base_speed, base_evasion);
 let monster1 = new Monster(0, 0, 0);
 
 
@@ -190,7 +195,7 @@ for (let i = 1; i < 101; i++) {
 
 game_reset();
 
-// TODO : Find better formulas (leveled up stat gain, monster stats and exp etc...)
+// TODO : Balance : Ogre Speed and Strength, Health (monsters and level up gain), Experience, Gold, Evasion
 // TODO : Add more monsters types (dragon boss and other normal monsters)
 // TODO : Save/load to JSON file locally
 // TODO : Rework and add more texts to make the game more interesting

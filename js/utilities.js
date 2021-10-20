@@ -2,7 +2,7 @@
 function game_reset() {
     logs.innerHTML = "";
     //                      Name       HP       Strength       Speed
-    player1 = new Character("Drayano", base_hp, base_strength, base_speed);
+    player1 = new Character("Drayano", base_hp, base_strength, base_speed, base_evasion);
     monster_reset();
     kills_number = 1;
     healing_cost = 10 + getRandomInt(15);
@@ -39,6 +39,7 @@ function save_game() {
             "health": player1.health,
             "strength": player1.strength,
             "speed": player1.speed,
+            "evasion": player1.evasion,
             "experience": player1.experience,
             "money": player1.money,
             "level": player1.level,
@@ -70,6 +71,7 @@ function load_game() {
         player1.health = player_profile[0].health;
         player1.strength = player_profile[0].strength;
         player1.speed = player_profile[0].speed;
+        player1.evasion = player_profile[0].evasion;
         player1.experience = player_profile[0].experience;
         player1.money = player_profile[0].money;
         player1.level = player_profile[0].level;
@@ -138,5 +140,5 @@ function stats() {
         player1.health = player1.max_health;
     }
 
-    player_stats.innerHTML = `Name : ${player1.name}<br>Level : ${player1.level}<br>XP : ${player1.experience} / ${experience_array[player1.level - 1]}<br>HP : ${player1.health} / ${player1.max_health}<br>Strength : ${player1.strength}<br>Speed : ${player1.speed}<br>Gold : ${player1.money}`;
+    player_stats.innerHTML = `Name : ${player1.name}<br>Level : ${player1.level}<br>XP : ${player1.experience} / ${experience_array[player1.level - 1]}<br>HP : ${player1.health} / ${player1.max_health}<br>Strength : ${player1.strength}<br>Speed : ${player1.speed}<br>Evasion : ${player1.evasion}<br>Gold : ${player1.money}`;
 }

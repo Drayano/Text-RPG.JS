@@ -8,7 +8,7 @@ function fight_decision(e) {
         // Fight Event
         if (random_event <= fight_event) {
             if (player1.speed >= monster1.speed) {
-                log_text(`${player1.name} speed (${player1.speed}) is bigger than the ${monster1.type} speed (${monster1.speed}), ${player1.name} attacks first !`);
+                log_text(`${player1.name} speed (${player1.speed}) is bigger or equal than the ${monster1.type} speed (${monster1.speed}), ${player1.name} attacks first !`);
                 
                 log_text("The fight begins !");
                 while (player1.health > 0 && monster1.health > 0) {
@@ -55,14 +55,14 @@ function fight_decision(e) {
     else if (e.target.innerHTML === "No") {
         // Fight Event
         if (random_event <= fight_event) {
-            if (player1.speed >= monster1.speed) {
-                log_text(`${player1.name} speed (${player1.speed}) is bigger than the ${monster1.type} speed (${monster1.speed}), ${player1.name} manages to flee !`);
+            if (player1.evasion > monster1.evasion) {
+                log_text(`${player1.name} evasion (${player1.evasion}) is bigger than the ${monster1.type} evasion (${monster1.evasion}), ${player1.name} manages to flee !`);
     
                 monster_reset();
             }
     
             else {
-                log_text(`${player1.name} tries to flee but the ${monster1.type} speed (${monster1.speed}) is bigger than ${player1.name} speed (${player1.speed}), the ${monster1.type} gets a free attack on ${player1.name} !`);
+                log_text(`${player1.name} tries to flee but the ${monster1.type} evasion (${monster1.speed}) is bigger or equal than ${player1.name} evasion (${player1.evasion}), the ${monster1.type} gets a free attack on ${player1.name} !`);
     
                 player1.takeDamage(monster1.strength);
     
