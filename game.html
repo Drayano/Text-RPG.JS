@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/game.css">
+    <title>Text-RPG.JS - Game</title>
+</head>
+<body>
+    <div class="flex-col">
+        <div class="parent">
+            <div class="title">
+                <h1>Text-RPG.JS</h1>
+            </div>
+    
+            <div class="gamelog">
+                <textarea readonly id="gameLog" cols="55" rows="23"></textarea>
+            </div>
+    
+            <div id="player-info">
+                
+            </div>
+    
+            <button class="btn" id="reset">Reset</button>
+            <button class="btn" id="next">Next</button>
+            <button class="btn" id="yes">Yes</button>
+            <button class="btn" id="no">No</button>
+    
+            <div id="inventory">
+                <div id="item1">
+                    <img id="potion" src="img/potion.png" alt="">
+                    <p id="item1-number"></p>
+                </div>
+
+                <div id="item2">
+                    <img id="sword" src="img/sword.png" alt="">
+                    <p id="item2-number"></p>
+                </div>
+
+                <div id="item3">
+                    <img id="shield" src="img/shield.png" alt="">
+                    <p id="item3-number"></p>
+                </div>
+            </div>
+
+            <button class="btn" id="save">Save Game</button>
+            <button class="btn" id="load">Load Game</button>
+        </div>
+
+        <div class="flex-row">
+            <button class="btn" id="potion-shop">Health Potion</button>
+            <button class="btn" id="sword-shop">Sword</button>
+            <button class="btn" id="shield-shop">Shield</button>
+        </div>
+    </div>
+
+    <a id="downloadJSON" style="display:none"></a>
+
+    <script src="js/utilities.js"></script>
+    <script src="js/items.js"></script>
+    <script src="js/game_logic.js"></script>
+    <script src="js/fight_logic.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

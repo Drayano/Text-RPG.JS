@@ -136,12 +136,13 @@ document.getElementById("save").addEventListener("click", save_game);
 document.getElementById("load").addEventListener("click", load_game);
 
 // Initialize Player and Monster
+let player_name = localStorage.getItem("Player Name");
 let base_hp = 100;
 let base_strength = 5 + getRandomInt(5);
 let base_speed = 7 + getRandomInt(8);
 let base_evasion = 10 + getRandomInt(10);
 
-let player1 = new Character("Drayano", base_hp, base_strength, base_speed, base_evasion);
+let player1 = new Character(player_name, base_hp, base_strength, base_speed, base_evasion);
 let monster1 = new Monster();
 
 
@@ -194,9 +195,13 @@ for (let i = 1; i <= 100; i++) {
 }
 
 game_reset();
+player_name = localStorage.getItem("Player Name");
+
+if (player_name !== "") {
+    player_setup();
+}
 
 // TODO : Lower Goblin chances of appearing depending on player level
 // TODO : Add more monsters types (dragon boss and other normal monsters)
-// TODO : Make player name editable
 // TODO : Add more texts to make the game more interesting
-// TODO : Make the website look better (also on mobile)
+// TODO : Make the website look better (index.html) (game.html : some light touches) (and add media queries for mobile)

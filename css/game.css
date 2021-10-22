@@ -14,8 +14,12 @@ body {
     ),
     url("../img/castle.jpg");
 
+    overflow: hidden;
+
     color: white;
     font-family: "MedievalSharp", sans-serif;
+
+    padding-bottom: 150px;
 }
 
 textarea {
@@ -44,22 +48,7 @@ img {
     max-height: 70%;
 }
 
-input[type="file"] {
-    display: none;
-}
-
-label {
-    margin-right: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-}
-
-#importJSON {
-    margin-left: 15px;
-}
-
-.parent {
+/* .parent {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -104,7 +93,67 @@ label {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+} */
+
+/* Grid Start */
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
 }
+
+.title {
+    grid-area: 1 / 1 / 2 / 10;
+}
+
+.gamelog {
+    grid-area: 2 / 3 / 8 / 8;
+}
+
+#player-info {
+    grid-area: 2 / 8 / 8 / 9;
+
+    text-align: center;
+    padding-top: 50px;
+}
+
+#inventory {
+    grid-area: 2 / 2 / 8 / 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#reset {
+    grid-area: 8 / 2 / 9 / 3;
+}
+
+#next {
+    grid-area: 8 / 8 / 9 / 9;
+}
+
+#yes {
+    grid-area: 8 / 4 / 9 / 5;
+}
+
+#no {
+    grid-area: 8 / 6 / 9 / 7;
+}
+
+#save {
+    grid-area: 9 / 3 / 10 / 5;
+}
+
+#load {
+    grid-area: 9 / 6 / 10 / 8;
+}
+
+/* Grid End */
 
 #item1 {
     text-align: center;
@@ -158,8 +207,8 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 200px;
-    padding-bottom: 204px;
+    padding-top: 120px;
+    padding-bottom: 159px;
 }
 
 .flex-row {
@@ -182,12 +231,4 @@ label {
 #shield-shop {
     margin-right: 20px;
     display: none;
-}
-
-#save {
-    margin-right: 20px;
-}
-
-#load {
-    margin-right: 20px;
 }

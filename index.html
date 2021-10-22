@@ -5,56 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
-    <title>Text RPG</title>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Text-RPG.JS</title>
 </head>
 <body>
-    <div class="flex-col">
-        <div class="parent">
-            <div class="title">
-                <h1>Text RPG</h1>
-            </div>
-    
-            <div class="gamelog">
-                <textarea readonly id="gameLog" cols="55" rows="23"></textarea>
-            </div>
-    
-            <div id="player-info">
-                
-            </div>
-    
-            <button class="btn" id="reset">Reset</button>
-            <button class="btn" id="next">Next</button>
-            <button class="btn" id="yes">Yes</button>
-            <button class="btn" id="no">No</button>
-    
-            <div id="inventory">
-                <div id="item1">
-                    <img id="potion" src="img/potion.png" alt="">
-                    <p id="item1-number"></p>
-                </div>
+    <h1 class="title">Text-RPG.JS</h1>
 
-                <div id="item2">
-                    <img id="sword" src="img/sword.png" alt="">
-                    <p id="item2-number"></p>
-                </div>
+    <div class="flex">
+        <p class="intro">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus molestiae quae doloribus voluptatum unde iste nihil, nam obcaecati amet? Nisi dolorem voluptates natus nam ipsum neque optio architecto, rem eos iusto officiis rerum vel veritatis repellendus ducimus temporibus nesciunt quos sed, eligendi, in hic laudantium? Accusamus aliquam blanditiis illo cum perferendis inventore quo. Eius dolore doloribus quod.
+        </p>
 
-                <div id="item3">
-                    <img id="shield" src="img/shield.png" alt="">
-                    <p id="item3-number"></p>
-                </div>
+        <div class="pick-name">
+            <h2 class="name">Choose your name to begin your adventure :</h2>
+            <div class="form">
+                <input type="text" name="name" id="player-name">
+                <a href="game.html" class="btn" id="submit">Submit</a>
             </div>
-        </div>
-
-        <div class="flex-row">
-            <button class="btn" id="potion-shop">Health Potion</button>
-            <button class="btn" id="sword-shop">Sword</button>
-            <button class="btn" id="shield-shop">Shield</button>
-        </div>
-
-        <div class="flex-row">
-            <button class="btn" id="save">Save Game</button>
-            <button class="btn" id="load">Load Game</button>
         </div>
 
         <div class="flex-row">
@@ -66,12 +33,9 @@
         </div>
     </div>
 
-    <a id="downloadJSON" style="display:none"></a>
+    
 
     <script src="js/utilities.js"></script>
-    <script src="js/items.js"></script>
-    <script src="js/game_logic.js"></script>
-    <script src="js/fight_logic.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/naming.js"></script>
 </body>
 </html>

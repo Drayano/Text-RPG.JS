@@ -81,7 +81,7 @@ function encounter(player, monster) {
 
     // Item Shop Event
     else if (random_event <= item_shop_event) {
-        log_text("You find an Item Shop in the distance, you decides to walk towards it...");
+        log_text("You find an Item Shop in the distance, you decide to walk towards it...");
 
         if (ambush_event <= 95) {
             log_text("\nYou can exchange your Gold for useful Items...");
