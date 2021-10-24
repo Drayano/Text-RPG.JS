@@ -145,8 +145,8 @@ function load_game() {
 
 function player_setup() {
     let item1: any = localStorage.getItem("Player Name");
-    let item2: any = localStorage.getItem("item1");
-    player_profile = JSON.parse("item2");
+    let item2: any = localStorage.getItem(item1);
+    player_profile = JSON.parse(item2);
     // player_profile = JSON.parse(localStorage.getItem(localStorage.getItem("Player Name")));
 
     player1.name = player_profile[0].name;
