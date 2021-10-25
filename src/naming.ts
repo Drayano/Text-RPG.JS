@@ -17,7 +17,7 @@ function register_name(): boolean {
     }
 
     let fr = new FileReader();
-    let player_profile;
+    let player_profile: any;
 
     fr.onload = function(e: any) {
         let result = JSON.parse(e.target.result);

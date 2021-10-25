@@ -74,11 +74,13 @@ function encounter(player, monster) {
             document.getElementById("potion-shop").style.display = "block";
             document.getElementById("sword-shop").style.display = "block";
             document.getElementById("shield-shop").style.display = "block";
+            document.querySelector(".flex-row").style.pointerEvents = "auto";
             document.getElementById("potion-shop").disabled = false;
             document.getElementById("sword-shop").disabled = false;
             document.getElementById("shield-shop").disabled = false;
             document.getElementById("yes").disabled = true;
             document.getElementById("no").disabled = true;
+            document.getElementById("inventory").style.display = "none";
         }
         else if (ambush_event > 95) {
             log_text("\nOh no ! Just as you approach the shop, a monster suddenly appears and ambush you, you're gonna have to fight it !");
@@ -93,11 +95,13 @@ function encounter(player, monster) {
                 document.getElementById("potion-shop").style.display = "block";
                 document.getElementById("sword-shop").style.display = "block";
                 document.getElementById("shield-shop").style.display = "block";
+                document.querySelector(".flex-row").style.pointerEvents = "auto";
                 document.getElementById("potion-shop").disabled = false;
                 document.getElementById("sword-shop").disabled = false;
                 document.getElementById("shield-shop").disabled = false;
                 document.getElementById("yes").disabled = true;
                 document.getElementById("no").disabled = true;
+                document.getElementById("inventory").style.display = "none";
             }
             else {
                 return;
@@ -114,6 +118,7 @@ function game_loop() {
         document.getElementById("potion-shop").style.display = "none";
         document.getElementById("sword-shop").style.display = "none";
         document.getElementById("shield-shop").style.display = "none";
+        document.querySelector(".flex-row").style.pointerEvents = "none";
         monster_reset();
         encounter(player1, monster1);
     }
@@ -124,6 +129,7 @@ function game_loop() {
         document.getElementById("potion-shop").style.display = "none";
         document.getElementById("sword-shop").style.display = "none";
         document.getElementById("shield-shop").style.display = "none";
+        document.querySelector(".flex-row").style.pointerEvents = "none";
         log_text(`${player1.name} is dead ! \nYou killed ${kills_number} monsters !`);
     }
 }

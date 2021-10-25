@@ -8,6 +8,8 @@ function game_reset() {
     kills_number = 0;
     healing_cost = 10 + getRandomInt(15);
     health_gain = 0;
+    sword_found = false;
+    shield_found = false;
     stats();
     document.getElementById("yes").disabled = false;
     document.getElementById("no").disabled = false;
@@ -84,6 +86,7 @@ function load_game() {
         kills_number = player_profile[0].kills;
         logs.innerHTML = "";
         log_text("Game Succesfully loaded");
+        stats();
         document.getElementById("yes").disabled = true;
         document.getElementById("no").disabled = true;
         document.getElementById("next").disabled = false;
@@ -110,9 +113,8 @@ function load_game() {
         }
         document.getElementById("potion-shop").style.display = "none";
         document.getElementById("sword-shop").style.display = "none";
-        document.getElementById("shield_shop").style.display = "none";
+        document.getElementById("shield-shop").style.display = "none";
         healing_cost = player1.level * 10 + 10 + getRandomInt(15);
-        stats();
     }
 }
 function player_setup() {
@@ -135,6 +137,7 @@ function player_setup() {
     kills_number = player_profile[0].kills;
     logs.innerHTML = "";
     log_text("Game Succesfully loaded");
+    stats();
     document.getElementById("yes").disabled = true;
     document.getElementById("no").disabled = true;
     document.getElementById("next").disabled = false;
@@ -161,9 +164,8 @@ function player_setup() {
     }
     document.getElementById("potion-shop").style.display = "none";
     document.getElementById("sword-shop").style.display = "none";
-    document.getElementById("shield_shop").style.display = "none";
+    document.getElementById("shield-shop").style.display = "none";
     healing_cost = player1.level * 10 + 10 + getRandomInt(15);
-    stats();
 }
 ;
 // General
@@ -172,7 +174,7 @@ function getRandomInt(max) {
 }
 function log_text(text) {
     logs.innerHTML += text + "\n";
-    logs.scrollTop = logs.scrollHeight;
+    // logs.scrollTop = logs.scrollHeight;
 }
 function stats() {
     if (player1.health > player1.max_health) {

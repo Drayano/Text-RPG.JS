@@ -119,3 +119,24 @@ label {
     background-color: gray;
     box-shadow: 0 0 gray;
 }
+
+@media (max-width: 750px) {
+    body {
+        max-height: 800px;
+    }
+
+    h1 {
+        padding-top: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 30px;
+        margin-left: 0px;
+    }
+
+    p {
+        text-align: center;
+        font-size: 16px;
+    }
+}

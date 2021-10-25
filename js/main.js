@@ -157,11 +157,11 @@ for (let i = 1; i <= 100; i++) {
 }
 game_reset();
 player_name = `${localStorage.getItem("Player Name")}`;
-if (player_name == "null") {
+if (player_name !== "null") {
     player_setup();
 }
 // TODO : Fix the fr.readAsText(files.item(0)!); on naming.ts (remove the ! and properly assign types)
 // TODO : Lower Goblin chances of appearing depending on player level
 // TODO : Add more monsters types (dragon boss and other normal monsters)
 // TODO : Add more texts to make the game more interesting
-// TODO : Make the website look better (index.html) (game.html : some light touches) (and add media queries for mobile)
+// TODO : Make the website look better (index.html)

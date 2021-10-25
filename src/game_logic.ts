@@ -94,6 +94,7 @@ function encounter(player: Character, monster: Monster) {
             (document.getElementById("potion-shop") as HTMLInputElement).style.display = "block";
             (document.getElementById("sword-shop") as HTMLInputElement).style.display = "block";
             (document.getElementById("shield-shop") as HTMLInputElement).style.display = "block";
+            (document.querySelector(".flex-row") as HTMLInputElement).style.pointerEvents = "auto";
 
             (document.getElementById("potion-shop") as HTMLInputElement).disabled = false;
             (document.getElementById("sword-shop") as HTMLInputElement).disabled = false;
@@ -101,6 +102,8 @@ function encounter(player: Character, monster: Monster) {
 
             (document.getElementById("yes") as HTMLInputElement).disabled = true;
             (document.getElementById("no") as HTMLInputElement).disabled = true;
+
+            (document.getElementById("inventory") as HTMLElement).style.display = "none";
         }
         
         else if (ambush_event > 95) {
@@ -120,6 +123,7 @@ function encounter(player: Character, monster: Monster) {
                 (document.getElementById("potion-shop") as HTMLInputElement).style.display = "block";
                 (document.getElementById("sword-shop") as HTMLInputElement).style.display = "block";
                 (document.getElementById("shield-shop") as HTMLInputElement).style.display = "block";
+                (document.querySelector(".flex-row") as HTMLInputElement).style.pointerEvents = "auto";
 
                 (document.getElementById("potion-shop") as HTMLInputElement).disabled = false;
                 (document.getElementById("sword-shop") as HTMLInputElement).disabled = false;
@@ -127,6 +131,8 @@ function encounter(player: Character, monster: Monster) {
 
                 (document.getElementById("yes") as HTMLInputElement).disabled = true;
                 (document.getElementById("no") as HTMLInputElement).disabled = true;
+
+                (document.getElementById("inventory") as HTMLElement).style.display = "none";
             }
 
             else {
@@ -147,6 +153,7 @@ function game_loop() {
         (document.getElementById("potion-shop") as HTMLInputElement).style.display = "none";
         (document.getElementById("sword-shop") as HTMLInputElement).style.display = "none";
         (document.getElementById("shield-shop") as HTMLInputElement).style.display = "none";
+        (document.querySelector(".flex-row") as HTMLInputElement).style.pointerEvents = "none";
 
         monster_reset();
         encounter(player1, monster1);
@@ -160,6 +167,7 @@ function game_loop() {
         (document.getElementById("potion-shop") as HTMLInputElement).style.display = "none";
         (document.getElementById("sword-shop") as HTMLInputElement).style.display = "none";
         (document.getElementById("shield-shop") as HTMLInputElement).style.display = "none";
+        (document.querySelector(".flex-row") as HTMLInputElement).style.pointerEvents = "none";
 
         log_text(`${player1.name} is dead ! \nYou killed ${kills_number} monsters !`);
     }

@@ -7,6 +7,8 @@ function game_reset() {
     kills_number = 0;
     healing_cost = 10 + getRandomInt(15);
     health_gain = 0;
+    sword_found = false;
+    shield_found = false;
 
     stats();
 
@@ -101,6 +103,7 @@ function load_game() {
 
         logs.innerHTML = "";
         log_text("Game Succesfully loaded");
+        stats();
 
         (document.getElementById("yes") as HTMLInputElement).disabled = true;
         (document.getElementById("no") as HTMLInputElement).disabled = true;
@@ -135,11 +138,9 @@ function load_game() {
 
         (document.getElementById("potion-shop") as HTMLInputElement).style.display = "none";
         (document.getElementById("sword-shop") as HTMLInputElement).style.display = "none";
-        (document.getElementById("shield_shop") as HTMLInputElement).style.display = "none";
+        (document.getElementById("shield-shop") as HTMLInputElement).style.display = "none";
 
         healing_cost = player1.level * 10 + 10 + getRandomInt(15);
-
-        stats();
     }
 }
 
@@ -165,6 +166,7 @@ function player_setup() {
 
     logs.innerHTML = "";
     log_text("Game Succesfully loaded");
+    stats();
 
     (document.getElementById("yes") as HTMLInputElement).disabled = true;
     (document.getElementById("no") as HTMLInputElement).disabled = true;
@@ -199,10 +201,9 @@ function player_setup() {
 
     (document.getElementById("potion-shop") as HTMLInputElement).style.display = "none";
     (document.getElementById("sword-shop") as HTMLInputElement).style.display = "none";
-    (document.getElementById("shield_shop") as HTMLInputElement).style.display = "none";
+    (document.getElementById("shield-shop") as HTMLInputElement).style.display = "none";
 
     healing_cost = player1.level * 10 + 10 + getRandomInt(15);
-    stats();
 };
 
 // General
@@ -212,7 +213,7 @@ function getRandomInt(max: number): number {
 
 function log_text(text: string): void {
     logs.innerHTML += text + "\n";
-    logs.scrollTop = logs.scrollHeight;
+    // logs.scrollTop = logs.scrollHeight;
 }
 
 function stats() {

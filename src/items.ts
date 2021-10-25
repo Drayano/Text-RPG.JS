@@ -121,6 +121,13 @@ function buyItem(e: any) {
         else {
             log_text("Oh no, you don't have enough Gold...");
         }
+
+        (document.getElementById("potion-shop") as HTMLInputElement).style.display = "none";
+        (document.getElementById("sword-shop") as HTMLInputElement).style.display = "none";
+        (document.getElementById("shield-shop") as HTMLInputElement).style.display = "none";
+        (document.querySelector(".flex-row") as HTMLInputElement).style.pointerEvents = "none";
+
+        (document.getElementById("inventory") as HTMLElement).style.display = "flex";
     }
     
     if (e.target.id === "sword-shop") {
@@ -148,6 +155,13 @@ function buyItem(e: any) {
         else {
             log_text("Oh no, you don't have enough Gold...");
         }
+
+        (document.getElementById("potion-shop") as HTMLInputElement).style.display = "none";
+        (document.getElementById("sword-shop") as HTMLInputElement).style.display = "none";
+        (document.getElementById("shield-shop") as HTMLInputElement).style.display = "none";
+        (document.querySelector(".flex-row") as HTMLInputElement).style.pointerEvents = "none";
+
+        (document.getElementById("inventory") as HTMLElement).style.display = "flex";
     }
 
     if (e.target.id === "shield-shop") {
@@ -176,5 +190,13 @@ function buyItem(e: any) {
             log_text("Oh no, you don't have enough Gold...");
         }
 
+        (document.getElementById("potion-shop") as HTMLInputElement).style.display = "none";
+        (document.getElementById("sword-shop") as HTMLInputElement).style.display = "none";
+        (document.getElementById("shield-shop") as HTMLInputElement).style.display = "none";
+        (document.querySelector(".flex-row") as HTMLInputElement).style.pointerEvents = "none";
+
+        (document.getElementById("inventory") as HTMLElement).style.display = "flex";
     }
+
+    stats();
 }
